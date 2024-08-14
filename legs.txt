@@ -1,0 +1,43 @@
+
+</head>
+<body>
+  <h1>Leg Counter</h1>
+  <form id="animalForm">
+    <label for="animalName">Enter Animal:</label><br>
+    <!-- required field for user -->
+    <input type="text" id="animalName" name="animalName" required><br> 
+    <label for="legCount">Number of Legs:</label><br>
+    <!-- required field for user -->
+    <input type="number" id="legCount" name="legCount" required><br><br>
+    <button type="button" onclick="createButton()">Create Animal Button</button>
+  </form>
+
+  <!-- container with the outputs -->
+  <div id="output"></div> 
+
+  <!-- JavaScript, creates buttons -->
+  <script>
+    function createButton() {
+      var animalName = document.getElementById('animalName').value;
+      var legCount = document.getElementById('legCount').value;
+      
+      var button = document.createElement('button');
+      button.textContent = animalName;
+      button.setAttribute('data_legs', legCount);
+      button.onclick = function() {
+        incrementLegCount(parseInt(this.getAttribute('data_legs')));
+      };
+      
+      document.body.appendChild(button);
+    }
+    
+    // adds leg of animal to existing leg count
+    var totalLegs = 0;
+    function incrementLegCount(legs) {
+      totalLegs += legs;
+      document.getElementById('output').textContent = "Total Legs Counted: " + totalLegs;
+    }
+  </script>
+</body>
+</html>
+s
